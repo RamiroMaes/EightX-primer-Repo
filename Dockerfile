@@ -4,6 +4,7 @@ WORKDIR /app
 
 COPY package.json tsconfig.json ./
 COPY src ./src
+COPY data ./data
 
 RUN npm install
 
@@ -14,6 +15,8 @@ FROM node:20-alpine AS runtime
 WORKDIR /app
 
 COPY --from=base /app/dist ./dist
+COPY --from=base /app/node_modules ./node_modules
+COPY --from=base /app/data ./data
 COPY package.json ./
 
 ENV NODE_ENV=production

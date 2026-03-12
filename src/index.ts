@@ -1,8 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 import dotenv from 'dotenv';
-import { ClaudeService } from './services/claudeService';
-import { logger } from './utils/logger';
+import { ClaudeService } from './services/claudeService.js';
+import { logger } from './utils/logger.js';
 
 dotenv.config();
 

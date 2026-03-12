@@ -1,5 +1,5 @@
 import Anthropic from '@anthropic-ai/sdk';
-import { IAIService, AIAnalysisResult } from './ai.interface';
+import { IAIService, AIAnalysisResult } from './ai.interface.js';
 
 export class ClaudeService implements IAIService {
   private client: Anthropic;
