@@ -1,0 +1,30 @@
+{
+  "name": "eightx-ai-integration-agent",
+  "version": "1.0.0",
+  "description": "Mini proyecto de AI Integration para procesar feedback de clientes con Claude.",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "latest",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  },
+  "keywords": [
+    "ai",
+    "integration",
+    "anthropic",
+    "claude",
+    "eightx"
+  ],
+  "author": "",
+  "license": "MIT"
+}

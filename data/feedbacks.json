@@ -1,0 +1,18 @@
+[
+  {
+    "id": "fbk-001",
+    "source": "email",
+    "text": "Me encantó el producto, pero el envío tardó más de lo prometido y el costo fue alto."
+  },
+  {
+    "id": "fbk-002",
+    "source": "chat",
+    "text": "El proceso de pago fue confuso y tuve que intentarlo tres veces hasta que funcionó."
+  },
+  {
+    "id": "fbk-003",
+    "source": "whatsapp",
+    "text": "El producto llegó en tiempo y forma, pero el empaque venía dañado."
+  }
+]
+
