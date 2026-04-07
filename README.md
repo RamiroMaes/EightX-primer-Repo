@@ -1,69 +1,69 @@
 # AI Integration Agent – EightX Style
 
-Mini proyecto en Node.js + TypeScript que procesa feedback de clientes usando la API de Anthropic (Claude) y devuelve una salida estructurada lista para enviar a hojas de cálculo, CRMs o notificaciones internas.
+A mini project in Node.js + TypeScript that processes customer feedback using the Anthropic API (Claude) and returns a structured output ready to be sent to spreadsheets, CRMs, or internal notifications.
 
-## Requisitos
+## Requirements
 
 - Docker
-- Una API Key de Anthropic (Claude)
+- An Anthropic API Key (Claude)
 
-## Setup (solo con Docker)
+## Setup (Docker only)
 
-1. Copiar el archivo de ejemplo de entorno y completar tu API key:
+1. Copy the environment example file and add your API key:
 
    ```bash
    cp .env.example .env
-   # Editar .env y colocar tu ANTHROPIC_API_KEY
+   # Edit .env and add your ANTHROPIC_API_KEY
    ```
 
-2. Construir la imagen Docker (esto instalará Node, npm y todas las dependencias **dentro del contenedor**):
+2. Build the Docker image (this will install Node, npm, and all dependencies **inside the container**):
 
    ```bash
    docker build -t eightx-ai-agent .
    ```
 
-3. Ejecutar el agente usando la imagen:
+3. Run the agent using the image:
 
    ```bash
    docker run --rm --env-file .env eightx-ai-agent
    ```
 
-   El contenedor:
-   - Leerá los feedbacks desde `data/feedbacks.json`.
-   - Llamará a la API de Claude.
-   - Mostrará en consola el análisis de cada feedback.
-   - Generará un CSV dentro del contenedor en `output/feedback_analysis.csv`.
+   The container will:
+   - Read feedback entries from `data/feedbacks.json`.
+   - Call the Claude API.
+   - Print the analysis for each feedback entry to the console.
+   - Generate a CSV file inside the container at `output/feedback_analysis.csv`.
 
-## Flujo actual
+## Current Flow
 
-Actualmente el agente:
+The agent currently:
 
-- Lee múltiples feedbacks desde `data/feedbacks.json` (cada uno con `id`, `source` y `text`).
-- Llama a `ClaudeService` (que usa `@anthropic-ai/sdk`) para analizar cada texto.
-- Pide a Claude que devuelva un JSON con:
+- Reads multiple feedback entries from `data/feedbacks.json` (each with `id`, `source`, and `text`).
+- Calls `ClaudeService` (which uses `@anthropic-ai/sdk`) to analyze each text.
+- Asks Claude to return a JSON object with:
   - `sentiment`
   - `category`
   - `suggestedAction`
   - `summary`
-- Muestra el resultado de cada feedback en consola (formato tabla).
-- Escribe un archivo CSV en `output/feedback_analysis.csv` con las columnas:
+- Prints the result of each feedback entry to the console (table format).
+- Writes a CSV file to `output/feedback_analysis.csv` with the columns:
   - `id, source, sentiment, category, summary, suggestedAction`
 
-Este es el núcleo del "AI Lead & Sentiment Dispatcher". A partir de aquí es sencillo:
+This is the core of the "AI Lead & Sentiment Dispatcher." From here, it's easy to:
 
-- Reemplazar el feedback hardcodeado por un input externo (archivo, API, webhook).
-- Guardar el resultado en CSV o Google Sheets.
-- Enviar notificaciones a Slack o email.
+- Replace hardcoded feedback with an external input source (file, API, webhook).
+- Save results to CSV or Google Sheets.
+- Send notifications to Slack or email.
 
-## Docker (una vez que tengas npm disponible)
+## Docker (once npm is available)
 
-Para construir la imagen:
+To build the image:
 
 ```bash
 docker build -t eightx-ai-agent .
 ```
 
-Para correrla:
+To run it:
 
 ```bash
 docker run --rm --env-file .env eightx-ai-agent
